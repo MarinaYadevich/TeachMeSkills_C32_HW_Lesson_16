@@ -18,7 +18,7 @@ public class ApplicationRunner {
         Set<String> passwordNumber = new LinkedHashSet<>();
         Set<Student> memberOurGroup = new HashSet<>();
 
-        Map<Set<String>, Set<Student>> passwordAndMembers = new HashMap<>();
+        Map<String ,Student> passwordAndMembers = new HashMap<>();
 
         passwordNumber.add("3254354662342");
         passwordNumber.add("4867458534756");
@@ -68,14 +68,15 @@ public class ApplicationRunner {
         memberOurGroup.add(student14);
         memberOurGroup.add(student15);
 
-        passwordAndMembers.put(passwordNumber, memberOurGroup);
+//не знаю как добавить ключ значение в Map
+
+        for(String pn : passwordNumber){
+            for(Student s: memberOurGroup){
+                passwordAndMembers.put(pn, s);
+            }
+        }
 
         passwordAndMembers.forEach((k, v) -> System.out.println(k + " -> " + v));
 
-        for(Map.Entry< Set<String>, Set <Student>> entry: passwordAndMembers.entrySet()){ // посмотрела у Екатерины , адаптировала под свой
-            System.out.println("Password: " + entry.getKey() + ", " + entry.getValue());
-
-            // не знаю как вывести чтобы было ключ-значение: "номер паспорта" --> Студент
         }
     }
-}
